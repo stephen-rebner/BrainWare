@@ -23,6 +23,13 @@ namespace Web.Infrastructure
             _connection.Open();
         }
 
+        public Database(string connectionString)
+        {
+            _connection = new SqlConnection(connectionString);
+
+            _connection.Open();
+        }
+
         public DbDataReader ExecuteReader(string query)
         {
            

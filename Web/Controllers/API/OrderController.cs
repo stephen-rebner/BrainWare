@@ -4,21 +4,27 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BrainWare.Dal;
+using BrainWare.Services.Models;
 
 namespace Web.Controllers
 {
     using System.Web.Mvc;
     using Infrastructure;
-    using Models;
 
     public class OrderController : ApiController
     {
+        private readonly IOrderRepository _orderRepository;
+        
+        
         [HttpGet]
-        public IEnumerable<Order> GetOrders(int id = 1)
+        public IEnumerable<OrderDto> GetOrders(int id = 1)
         {
-            var data = new OrderService();
-
-            return data.GetOrdersForCompany(id);
+            var orderService = new BrainWare.Services.OrdersService();
+            
+            var orders = orderService.GetOrdersByCompanyId(id);
+            
+            return orders;
         }
     }
 }
