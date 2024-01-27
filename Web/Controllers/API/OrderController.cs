@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using BrainWare.Dal;
 using BrainWare.Services.Models;
@@ -10,7 +6,6 @@ using BrainWare.Services.Models;
 namespace Web.Controllers
 {
     using System.Web.Mvc;
-    using Infrastructure;
 
     public class OrderController : ApiController
     {

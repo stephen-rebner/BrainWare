@@ -19,17 +19,14 @@ namespace BrainWare.Services
                     CompanyName = order.CompanyName,
                     Description = order.Description,
                     OrderTotal = order.OrderProducts.Sum(op => op.Price * op.Quantity),
-                    OrderProducts = order.OrderProducts.Select(op => new OrderProductDto
+                    OrderProducts = order.OrderProducts.Select(orderProduct => new OrderProductDto
                     {
-                        OrderId = op.OrderId,
-                        ProductId = op.ProductId,
-                        Product = new ProductDto
-                        {
-                            Name = op.Product.Name,
-                            Price = op.Product.Price
-                        },
-                        Quantity = op.Quantity,
-                        Price = op.Price
+                        OrderId = orderProduct.OrderId,
+                        ProductId = orderProduct.ProductId,
+                        ProductName = orderProduct.Product.Name,
+                        ProductPrice = orderProduct.Product.Price,
+                        Quantity = orderProduct.Quantity,
+                        Price = orderProduct.Price
                     }).ToList()
                 }).ToList();
         }
